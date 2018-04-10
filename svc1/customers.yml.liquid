@@ -1,21 +1,11 @@
 in:
-  type: postgresql
-  host: 104.198.212.23
-  user: usr3
-  password: pwd3
-  database: svc1db
+{% include "in/svc1" %}
   table: customers
   where: "year >= {{ env.RANGE_START }}
       and year < {{ env.RANGE_STOP }}"
 out:
-  type: bigquery
-  mode: replace
-  auth_method: compute_engine  # default
-  project: hellogcp-200702
-  dataset: ods_svc1
+{% include "out/svc1" %}
   table: customers${{ env.PARTITION_ID }}
-  compression: GZIP
   gcs_bucket: hellogcp-200702
-  auto_create_bcs_bucket: false
   auto_create_table: false
 
