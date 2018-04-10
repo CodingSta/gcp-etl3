@@ -5,5 +5,17 @@ in:
   password: pwd3
   database: svc1db
   table: customers
+  where: "year >= 2001
+      and year < 2002"
 out:
-  stdout
+  type: bigquery
+  mode: replace
+  auth_method: compute_engine  # default
+  project: hellogcp-200702
+  dataset: ods_svc1
+  table: customers$20010101
+  compression: GZIP
+  gcs_bucket: hellogcp-200702
+  auto_create_bcs_bucket: false
+  auto_create_table: true
+
