@@ -1,0 +1,5 @@
+in:
+  type: file
+  path_prefix: '/home/allieuslee/etl3/csv/sample_'
+out:
+  type: stdout
